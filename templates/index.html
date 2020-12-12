@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+<!--base.htmlを拡張、レイアウト以外の部分だけ書けばよい-->
+
+{% block content %}
+<!--contentという名のブロック扱い-->
+
+<form method="post" action="/send" enctype="multipart/form-data">
+<!--
+  actionでは実行された時の動作を指定
+  methodはデータを送る形式をpost(httpリクエストにデータを追加)かget(URLにデータを追加)で！
+  enctypeでは送信時のデータ形式を指定
+-->
+  <input type="file" id="img_file" name="img_file" class="col-sm-4">
+  <!--送信ボタン-->
+  <input type="submit" value="送信" class="btn">
+  
+</form>
+  {% if img_url %}
+  <!--img_urlに値が入っていれば、という意味-->
+<p><img src="{{ img_url }}"></p>
+  {% endif %}
+{% endblock %}
